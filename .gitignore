@@ -1,0 +1,15 @@
+# Secrets (commit backend/config/config.example.php instead)
+backend/config/config.php
+
+# Logs (the folder itself stays in Git)
+backend/logs/*
+!backend/logs/.gitkeep
+
+# Dependencies
+backend/vendor/
+
+# Editor / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
