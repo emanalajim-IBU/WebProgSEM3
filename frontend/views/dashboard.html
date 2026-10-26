@@ -1,0 +1,70 @@
+<h1 class="h3 page-title mb-4">Dashboard</h1>
+
+<div class="row g-3 mb-4">
+  <div class="col-sm-6 col-xl-3">
+    <div class="card stat-card h-100"><div class="card-body">
+      <div class="text-muted small">Open maintenance requests</div><div class="stat-value">3</div>
+    </div></div>
+  </div>
+  <div class="col-sm-6 col-xl-3">
+    <div class="card stat-card stat-amber h-100"><div class="card-body">
+      <div class="text-muted small">Announcements</div><div class="stat-value">4</div>
+    </div></div>
+  </div>
+  <div class="col-sm-6 col-xl-3">
+    <div class="card stat-card stat-info h-100"><div class="card-body">
+      <div class="text-muted small">Chat channels</div><div class="stat-value">4</div>
+    </div></div>
+  </div>
+  <div class="col-sm-6 col-xl-3">
+    <div class="card stat-card stat-dark h-100"><div class="card-body">
+      <div class="text-muted small">Residents</div><div class="stat-value">4</div>
+    </div></div>
+  </div>
+</div>
+
+<div class="row g-4">
+  <div class="col-lg-8">
+    <div class="card mb-4">
+      <div class="card-header d-flex justify-content-between align-items-center">
+        Latest announcements <a href="#/announcements" class="small">View all</a>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item"><strong>Elevator inspection next Tuesday</strong><div class="small text-muted">Posted by Eman Alajim</div></li>
+        <li class="list-group-item"><strong>Water shut-off on Friday</strong><div class="small text-muted">Posted by Eman Alajim</div></li>
+        <li class="list-group-item"><strong>Garage cleaning on Saturday</strong><div class="small text-muted">Posted by Eman Alajim</div></li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-header d-flex justify-content-between align-items-center">
+        Recent maintenance requests <a href="#/maintenance" class="small">View all</a>
+      </div>
+      <div class="table-responsive">
+        <table class="table align-middle mb-0">
+          <thead><tr><th>Title</th><th>Requested by</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>Heating radiator not working, apt 7</td><td>Liam Novak</td><td><span class="badge text-bg-warning">Open</span></td></tr>
+            <tr><td>Elevator makes a loud noise</td><td>Noah Berg</td><td><span class="badge text-bg-warning">Open</span></td></tr>
+            <tr><td>Broken light in 3rd floor hallway</td><td>Liam Novak</td><td><span class="badge text-bg-info">In progress</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-4">
+    <!-- Planned external API feature (Milestone 3): weather at the building -->
+    <div class="card" id="weatherCard">
+      <div class="card-header">Weather at the building</div>
+      <div class="card-body text-center">
+        <i class="fa-solid fa-cloud-sun fa-3x text-warning mb-2"></i>
+        <div class="stat-value">18&deg;C</div>
+        <div class="text-muted">Partly cloudy</div>
+        <div class="small mt-2">Humidity 62% &middot; Wind 9 km/h</div>
+      </div>
+      <div class="card-footer small text-muted">
+        Static preview. This card will show live data from a weather API through a backend endpoint, with a friendly message if the API is unavailable.
+      </div>
+    </div>
+  </div>
+</div>

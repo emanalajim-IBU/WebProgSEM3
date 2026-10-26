@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Building Management System</title>
+  <link rel="icon" type="image/svg+xml" href="static/img/logo.svg">
+  <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+  <noscript><div class="alert alert-danger m-3">JavaScript is required to run this application.</div></noscript>
+
+  <!-- Login / register views are rendered here (no sidebar) -->
+  <div id="authView" class="d-none"></div>
+
+  <!-- Application shell -->
+  <div id="shell" class="d-none">
+    <nav class="sidebar" id="sidebar" aria-label="Main navigation">
+      <a class="sidebar-brand d-flex align-items-center px-3" href="#/dashboard">
+        <img src="static/img/logo.svg" alt="" width="32" height="32" class="me-2">
+        <span>Building<br>Management</span>
+      </a>
+      <ul class="nav flex-column px-2">
+        <li class="nav-item"><a class="nav-link" href="#/dashboard" data-route="/dashboard"><i class="fa-solid fa-gauge"></i>Dashboard</a></li>
+        <li class="sidebar-heading">Community</li>
+        <li class="nav-item"><a class="nav-link" href="#/channels" data-route="/channels"><i class="fa-solid fa-comments"></i>Chat channels</a></li>
+        <li class="nav-item"><a class="nav-link" href="#/announcements" data-route="/announcements"><i class="fa-solid fa-bullhorn"></i>Announcements</a></li>
+        <li class="sidebar-heading">Building</li>
+        <li class="nav-item"><a class="nav-link" href="#/maintenance" data-route="/maintenance"><i class="fa-solid fa-screwdriver-wrench"></i>Maintenance</a></li>
+        <li class="sidebar-heading">Administration</li>
+        <li class="nav-item"><a class="nav-link" href="#/users" data-route="/users"><i class="fa-solid fa-users"></i>Users</a></li>
+        <li class="sidebar-heading">Account</li>
+        <li class="nav-item"><a class="nav-link" href="#/profile" data-route="/profile"><i class="fa-solid fa-user"></i>Profile</a></li>
+        <li class="nav-item"><a class="nav-link" href="#/login"><i class="fa-solid fa-right-from-bracket"></i>Logout</a></li>
+      </ul>
+    </nav>
+    <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+    <div id="contentWrapper" class="d-flex flex-column">
+      <header class="topbar navbar bg-white shadow-sm px-3">
+        <button type="button" id="sidebarToggle" class="btn btn-outline-secondary" aria-label="Toggle navigation"><i class="fa-solid fa-bars"></i></button>
+        <a class="nav-link ms-auto" href="#/profile"><i class="fa-solid fa-circle-user fa-lg me-2"></i><span class="d-none d-sm-inline">Eman Alajim</span></a>
+      </header>
+      <main id="appView" class="container-fluid py-4 flex-grow-1"></main>
+      <footer class="py-3 text-center small text-muted">Building Management System &middot; 2026</footer>
+    </div>
+  </div>
+
+  <div class="toast-container position-fixed bottom-0 end-0 p-3">
+    <div id="previewToast" class="toast text-bg-dark border-0" role="status" aria-live="polite" aria-atomic="true">
+      <div class="d-flex">
+        <div class="toast-body">Static preview: nothing is saved until the backend is connected.</div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/router.js"></script>
+</body>
+</html>
