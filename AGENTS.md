@@ -6,7 +6,7 @@ Roles: admin, resident. Entities: users, channels, messages, maintenance_request
 
 ## Project status
 - Milestone 1 (done): project structure, static SPAP frontend, draft ERD.
-- Milestone 2 (WIP): MySQL database with sample data and the DAO layer.
+- Milestone 2 (done): MySQL database with sample data and the DAO layer.
 
 ## Technology stack
 - Frontend: HTML, CSS, JavaScript, Bootstrap 5 (SB Admin 2 template), single-page application (SPA)
@@ -23,6 +23,7 @@ Roles: admin, resident. Entities: users, channels, messages, maintenance_request
 - Tables and primary keys: users (user_id), channels (channel_id), messages (message_id), maintenance_requests (request_id), announcements (announcement_id).
 - Foreign keys: messages.channel_id -> channels, messages.user_id -> users, maintenance_requests.user_id -> users, announcements.created_by -> users. All use ON DELETE CASCADE.
 - Allowed values: users.role is admin or resident; channels.type is public or private; maintenance_requests.status is open, in_progress or resolved.
+- Password handling: users.password_hash stores a password_hash() hash. It is never returned by the API.
 - If the schema is changed (only after asking the user), update docs/building_management.sql, docs/DATABASE.md and the column list of the affected DAO in the same change.
 
 ## Frontend rules
@@ -51,4 +52,3 @@ Roles: admin, resident. Entities: users, channels, messages, maintenance_request
 - Make small changes and explain what you changed and why.
 - **Existing File & Folder Protection:** If a file or folder already exists in the project workspace, keep it as-is. Do not overwrite, delete, or recreate existing files or directories unless explicitly instructed.
 
----
