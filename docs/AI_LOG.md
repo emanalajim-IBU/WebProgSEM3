@@ -30,3 +30,14 @@
 1. It filled the dummy data according to the template I was using, and not my credentials even tho it was stated in the request, easily fixed.
 2. Forgot to update the AI_LOG.md with the prompts.
 3. Forgot to update the agents.md file with the rules for the database that were given in the request.
+
+## Milestone 3
+
+### Tools and tasks
+- **Claude (claude.ai chat)** - generated the services, FlightPHP routes, entry point, Swagger page, openapi.json and the weather service.
+  Main prompt: "Add whatever library is needed just make it work please, also keepup the agents_logs..."
+- **Student** - tested all endpoints in Swagger, moved the files into backend/rest/ to match the professor's structure, and fixed the file paths.
+
+### Where the AI was wrong
+1. ...
+2. ...

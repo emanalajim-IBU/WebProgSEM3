@@ -31,11 +31,36 @@
     }
   });
 
+  // Password confirmation: compares the last two password fields of a form
+  // (register: password + confirm, profile: new + confirm). Returns true if they differ.
+  function passwordsMismatch(form) {
+    const fields = form.querySelectorAll('input[type="password"]');
+    if (fields.length < 2) {
+      return false;
+    }
+    const confirm = fields[fields.length - 1];
+    const first = fields[fields.length - 2];
+    const mismatch = confirm.value !== first.value;
+    confirm.setCustomValidity(mismatch ? 'Passwords do not match.' : '');
+    return mismatch;
+  }
+
+  document.addEventListener('input', function (event) {
+    if (event.target.form && event.target.type === 'password') {
+      passwordsMismatch(event.target.form);
+    }
+  });
+
   // Static forms: no page reload and no backend yet (connected in later milestones)
   document.addEventListener('submit', function (event) {
     event.preventDefault();
     const form = event.target;
     const action = form.dataset.staticAction;
+
+    if (passwordsMismatch(form)) {
+      form.reportValidity();
+      return;
+    }
 
     if (action === 'login') {
       window.location.hash = '#/dashboard';

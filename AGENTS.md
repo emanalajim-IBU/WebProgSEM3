@@ -7,15 +7,17 @@ Roles: admin, resident. Entities: users, channels, messages, maintenance_request
 ## Project status
 - Milestone 1 (done): project structure, static SPAP frontend, draft ERD.
 - Milestone 2 (done): MySQL database with sample data and the DAO layer.
+- Milestone 3 (done): services, FlightPHP routes, OpenAPI/Swagger, external weather API.
 
 ## Technology stack
 - Frontend: HTML, CSS, JavaScript, Bootstrap 5 (SB Admin 2 template), single-page application (SPA)
 - Backend: PHP with FlightPHP (REST API), PDO, MySQL
 - Local server: XAMPP
+- Libraries: flightphp/core (Composer, backend/composer.json), Swagger UI 5.17.14 from a CDN. Ask before adding others.
 
 ## Folder structure
 - frontend/: css/, js/, views/ (one HTML file per view), static/
-- backend/: routes/, services/, dao/, middleware/, config/, logs/
+- backend/: index.php, rest/ (routes/, services/, dao/), middleware/, config/, logs/
 - docs/: AI_LOG.md and other documentation
 
 ## Database 
@@ -35,10 +37,15 @@ Roles: admin, resident. Entities: users, channels, messages, maintenance_request
 - Only services call DAO classes. Routes never call DAO classes directly.
 - All SQL uses PDO prepared statements.
 - Routes return JSON with correct HTTP status codes.
-- DAO layer lives in backend/dao/. Database.php creates the shared PDO connection from backend/config/config.php. BaseDao.php holds the reusable CRUD methods (getAll, getById, insert, update, delete).
+- DAO layer lives in backend/rest/dao/. Database.php creates the shared PDO connection from backend/config/config.php. BaseDao.php holds the reusable CRUD methods (getAll, getById, insert, update, delete).
 - Every entity has its own DAO that extends BaseDao (UserDao, ChannelDao, MessageDao, MaintenanceRequestDao, AnnouncementDao). A DAO passes its table name, primary key and list of writable columns to BaseDao.
 - Entity-specific queries (for example getByEmail) go into that entity's DAO, never into a route or a service. No SQL outside backend/dao/.
 - DAO methods never decide HTTP status codes or business rules; that is the job of services and routes.
+- Entry point is backend/index.php. Each entity has a service in backend/rest/services/ (extends BaseService) and a routes class in backend/rest/routes/.
+- Services validate input and throw ApiException(message, status). Responses never contain password_hash, stack traces, SQL or file paths.
+- Errors are JSON: {"error": "..."}. Status codes: 200, 201, 400, 403, 404, 500, 503.
+- Every new endpoint must be added to docs/openapi.json.
+- External API: WeatherService (OpenWeatherMap), 5 second timeout, failures written to backend/logs/error.log, key only in config.php.
 
 ## Conventions
 - PHP classes: PascalCase (UserService, UserDao). Files are named after the class.
