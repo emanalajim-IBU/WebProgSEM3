@@ -11,7 +11,7 @@ class Database
     public static function getConnection(): PDO
     {
         if (self::$connection === null) {
-            $configPath = __DIR__ . '/../config/config.php';
+            $configPath = __DIR__ . '/../../config/config.php';
             if (!file_exists($configPath)) {
                 throw new RuntimeException(
                     'Missing backend/config/config.php. Copy config.example.php to config.php and fill in your values.'

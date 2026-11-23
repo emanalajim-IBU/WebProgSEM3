@@ -1,0 +1,13 @@
+RewriteEngine On
+
+# Pass the Authorization header to PHP (needed for JWT in Milestone 4)
+SetEnvIf Authorization "(.*)" HTTP_AUTHORIZATION=$1
+
+# Never serve internal folders or Composer files directly
+RewriteRule ^(config|logs|rest|middleware|vendor)(/|$) - [F,L]
+RewriteRule ^composer\.(json|lock)$ - [F,L]
+
+# Everything that is not a real file or folder goes to FlightPHP
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ index.php [QSA,L]

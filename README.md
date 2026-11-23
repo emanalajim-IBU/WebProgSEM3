@@ -4,6 +4,7 @@ A web application for residents and building managers to handle community chat r
 
 > **Status: Milestone 1** – project structure, static single-page frontend and draft ERD. The backend, database and API are added in the next milestones.
 > **Status: Milestone 2** - MySQL database with sample data and the DAO layer.
+> **Status: Milestone 3** – database, DAO layer, services, REST API with Swagger and an external weather API.
 
 ## Entities and relationships
 
@@ -24,6 +25,8 @@ A web application for residents and building managers to handle community chat r
 | `admin` | Manages users, channels, announcements and maintenance requests | added with the sample data (Milestone 2) |
 | `resident` | Chats, reads announcements, submits maintenance requests | added with the sample data (Milestone 2) |
 
+Real login will be availabe in Milestone 4.
+
 ## External API
 
 Planned feature: a **weather card on the dashboard** (weather at the building's location), loaded through a backend endpoint, with a friendly message when the API is unavailable. The card is already placed in the static dashboard (`frontend/views/dashboard.html`). Implemented in Milestone 3.
@@ -32,8 +35,8 @@ Planned feature: a **weather card on the dashboard** (weather at the building's 
 
 ```
 frontend/   index.html, css/, js/ (app.js, router.js), views/ (one HTML file per view), static/
-backend/    routes/, services/, dao/, middleware/, config/, logs/ (not committed)
-docs/       ERD.png, AI_LOG.md
+backend/    index.php, rest/ (routes/, services/, dao/), middleware/, config/, logs/
+docs/       ERD.png, AI_LOG.md, DATABASE.md, openapi.json
 AGENTS.md   rules for AI assistants
 ```
 
@@ -42,8 +45,11 @@ Frontend views: login, register, dashboard, chat channels, announcements, mainte
 ## Running locally (Milestone 1 & 2)
 
 1. Put the project folder in `htdocs` and start **Apache** in XAMPP.
-2. Open `http://localhost/WebProgSEM3/frontend/`.
-3. Any email/password on the login page opens the dashboard (static preview, nothing is saved).
+2. In phpMyAdmin, import docs/building_management.sql.
+3. Copy backend/config/config.example.php to backend/config/config.php and fill in database values (and an OpenWeatherMap key for the weather card).
+4. In the `..\WebProgSEM3\backend` folder run: composer install
+5. Frontend: `http://localhost/WebProgSEM3/frontend/`
+6. API: `http://localhost/WebProgSEM3/backend/`  Swagger: `http://localhost/WebProgSEM3/backend/swagger/`
 
 ---
 
@@ -52,5 +58,5 @@ Frontend views: login, register, dashboard, chat channels, announcements, mainte
 
 ## Links
 
-- Swagger documentation: _added in Milestone 3_
+- Swagger documentation: [Swagger](http://localhost/WebProgSEM3/backend/swagger/)
 - Deployed application: _added in Milestone 5_
